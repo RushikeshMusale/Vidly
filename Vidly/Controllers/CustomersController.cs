@@ -12,7 +12,8 @@ namespace Vidly.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            return View();
+            var customers = GetCustomers();
+            return View(customers);
         }
 
         private IEnumerable<Customer> GetCustomers()
@@ -34,7 +35,7 @@ namespace Vidly.Controllers
                 return HttpNotFound();
             }
 
-            return View();
+            return View(customer);
         }
     }
 }
