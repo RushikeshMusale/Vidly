@@ -13,6 +13,8 @@ namespace Vidly.Controllers
         public ActionResult Index()
         {
             var customers = GetCustomers();
+            //  List<Customer> nullCust = new List<Customer>(); 
+            // List<Customer> nullCust = null; 
             return View(customers);
         }
 

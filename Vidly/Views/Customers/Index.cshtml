@@ -5,22 +5,32 @@
 
 <h2>Customers</h2>
 
-<table class="table table-border table-hover">
-    <tr>
-        <th>
-            Customer
-        </th>
-    </tr>
 
 
-    @foreach (var customer in Model)
-    {
+@if (Model != null && Model.Count() != 0)
+{
+    <table class="table table-border table-hover">
         <tr>
-            <td>
-               @Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id },null)
-                 
-            </td>
+            <th>
+                Customer
+            </th>
         </tr>
-    }
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)
 
-</table>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    var message = "We don't have any customers Yet!";
+    @message
+}
+
+
+
