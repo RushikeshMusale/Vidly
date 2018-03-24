@@ -211,6 +211,10 @@
     <Compile Include="Migrations\201803240743111_AddBirthdateToCustomer.Designer.cs">
       <DependentUpon>201803240743111_AddBirthdateToCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803240746484_MakeBirthdateNullable.cs" />
+    <Compile Include="Migrations\201803240746484_MakeBirthdateNullable.Designer.cs">
+      <DependentUpon>201803240746484_MakeBirthdateNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -318,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803240743111_AddBirthdateToCustomer.resx">
       <DependentUpon>201803240743111_AddBirthdateToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803240746484_MakeBirthdateNullable.resx">
+      <DependentUpon>201803240746484_MakeBirthdateNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
