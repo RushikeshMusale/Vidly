@@ -183,11 +183,20 @@
     <Compile Include="Migrations\201803240423491_AddIsSubscribedToNewsletter.Designer.cs">
       <DependentUpon>201803240423491_AddIsSubscribedToNewsletter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803240432385_AddMembershipType.cs" />
+    <Compile Include="Migrations\201803240432385_AddMembershipType.Designer.cs">
+      <DependentUpon>201803240432385_AddMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803240443571_updateMembershipIdfromIntToByte.cs" />
+    <Compile Include="Migrations\201803240443571_updateMembershipIdfromIntToByte.Designer.cs">
+      <DependentUpon>201803240443571_updateMembershipIdfromIntToByte.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -268,6 +277,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803240423491_AddIsSubscribedToNewsletter.resx">
       <DependentUpon>201803240423491_AddIsSubscribedToNewsletter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803240432385_AddMembershipType.resx">
+      <DependentUpon>201803240432385_AddMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803240443571_updateMembershipIdfromIntToByte.resx">
+      <DependentUpon>201803240443571_updateMembershipIdfromIntToByte.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
