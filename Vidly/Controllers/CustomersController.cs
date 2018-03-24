@@ -19,7 +19,12 @@ namespace Vidly.Controllers
             return View(customers);
         }
 
-        
+        //Important method when using db context.
+        //Do not forgot to add
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
         public ActionResult Details(int id)
         {
