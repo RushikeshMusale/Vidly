@@ -1,4 +1,4 @@
-﻿@model Vidly.Models.Customer
+﻿@model Vidly.ViewModels.NewCustomerViewModel
 @{
     ViewBag.Title = "New";
 }
@@ -8,25 +8,30 @@
 @using (@Html.BeginForm("Create", "Customers"))
 {
     <div class="form-group">
-        @Html.LabelFor(c => c.Name)
-        @Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
+        @Html.LabelFor(c => c.Customer.Name)
+        @Html.TextBoxFor(c => c.Customer.Name, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(c => c.Birthdate)
+        @Html.LabelFor(c => c.Customer.Birthdate)
         @*
             In the <lable> tag for attribute is set so that 
             after clicking on label Name focus is set to textbox
 
             <label for="Birthdate">Date of Birth</label>
         *@
-        @Html.TextBoxFor(c => c.Birthdate, new { @class = "form-control" })
-    </div>
+        @Html.TextBoxFor(c => c.Customer.Birthdate, new { @class = "form-control" })
+    </div>    
 
     <div class="checkbox">
         <label>
-            @Html.CheckBoxFor(c => c.IsSubscribedToNewsletter)Subscribe to Newsletter?
+            @Html.CheckBoxFor(c => c.Customer.IsSubscribedToNewsletter)Subscribe to Newsletter?
         </label>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.MembershipTypeId)
+        @Html.DropDownListFor(c => c.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes,"Id","Name"), "Select Membership Type", new { @class = "form-control" })
     </div>
 }
 
