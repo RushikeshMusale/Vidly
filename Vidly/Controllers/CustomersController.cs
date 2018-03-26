@@ -44,7 +44,7 @@ namespace Vidly.Controllers
         public ActionResult New()
         {
             var membersipTypes = _context.MembershipTypes.ToList();
-            NewCustomerViewModel ViewModel = new NewCustomerViewModel
+            CustomerFormViewModel ViewModel = new CustomerFormViewModel
             {
                 MembershipTypes = membersipTypes
             };
@@ -53,7 +53,7 @@ namespace Vidly.Controllers
 
         [HttpPost]
         // Here parameter customer will work because when Customer/New is submitted
-        // it will send Customer object as we have bound NewCustomerViewModel.Customer 
+        // it will send Customer object as we have bound CustomerFormViewModel.Customer 
         // (indirectly Customer)to the HTML controls
         // NOTE: Parameter name should be customer here
         public ActionResult Create(Customer customer)
@@ -64,9 +64,9 @@ namespace Vidly.Controllers
         }
 
         //[HttpPost] 
-        // If we are using NewCustomerViewModel parameter, any name would work
+        // If we are using CustomerFormViewModel parameter, any name would work
         // for ex. here nc
-        //public ActionResult Create(NewCustomerViewModel nc)
+        //public ActionResult Create(CustomerFormViewModel nc)
         //{
         //    _context.Customers.Add(nc.Customer);
         //    _context.SaveChanges();
