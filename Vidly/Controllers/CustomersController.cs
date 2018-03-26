@@ -50,5 +50,27 @@ namespace Vidly.Controllers
             };
             return View(ViewModel);
         }
+
+        [HttpPost]
+        // Here parameter customer will work because when Customer/New is submitted
+        // it will send Customer object as we have bound NewCustomerViewModel.Customer 
+        // (indirectly Customer)to the HTML controls
+        // NOTE: Parameter name should be customer here
+        public ActionResult Create(Customer customer)
+        {
+            _context.Customers.Add(customer);
+            _context.SaveChanges();
+            return RedirectToAction("Index","Customers");
+        }
+
+        //[HttpPost] 
+        // If we are using NewCustomerViewModel parameter, any name would work
+        // for ex. here nc
+        //public ActionResult Create(NewCustomerViewModel nc)
+        //{
+        //    _context.Customers.Add(nc.Customer);
+        //    _context.SaveChanges();
+        //    return RedirectToAction("Index","Customer");
+        //}
     }
 }
