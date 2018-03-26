@@ -10,7 +10,7 @@
     <li>Birthdate:
     @if (Model.Birthdate.HasValue)
     {
-        <text>@Model.Birthdate</text>
+        <text>@Model.Birthdate.Value.ToLongDateString()</text>
     }
     </li>
 </ul>
