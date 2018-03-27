@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
 using System.Data.Entity;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -24,6 +25,15 @@ namespace Vidly.Controllers
             if (movie == null)
                 return HttpNotFound();
             return View(movie);
+        }
+
+        public ActionResult New()
+        {
+            var viewModel = new MovieFormViewModel
+            {
+                GenreType = _context.Genres.ToList()
+            };
+            return View("MovieForm",viewModel);
         }
 
         protected override void Dispose(bool disposing)
