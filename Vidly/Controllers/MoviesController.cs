@@ -41,8 +41,20 @@ namespace Vidly.Controllers
         {
             try
             {
-                movie.DateAdded = DateTime.Now;
-                _context.Movies.Add(movie);
+                if(movie.Id == 0)
+                {
+                    movie.DateAdded = DateTime.Now;
+                    _context.Movies.Add(movie);
+                }
+                else
+                {
+                    var movieInDB = _context.Movies.Single(m => m.Id == movie.Id);
+
+                    movieInDB.Name = movie.Name;
+                    movieInDB.NumberInStock = movie.NumberInStock;
+                    movieInDB.GenreId = movie.GenreId;
+                    movieInDB.ReleaseDate = movie.ReleaseDate;
+                }
                 _context.SaveChanges();
             }
             catch (DbUpdateException e)
@@ -51,6 +63,20 @@ namespace Vidly.Controllers
                 throw;
             }
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var movie = _context.Movies.SingleOrDefault(x => x.Id == id);
+            if (movie == null)
+                return HttpNotFound();
+
+            var viewModel = new MovieFormViewModel {
+                Movie=movie,
+                GenreType = _context.Genres.ToList()        
+            };
+
+            return View("MovieForm",viewModel);
         }
 
         protected override void Dispose(bool disposing)
