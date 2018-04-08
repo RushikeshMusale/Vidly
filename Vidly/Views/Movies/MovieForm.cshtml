@@ -4,14 +4,10 @@
 }
 
 @{
-    string caption = "";
+    string caption = "New Movie";
 
-    if (Model.Movie!=null && Model.Movie.Id == 0)
-    {
-        caption = "New Movie";
-    }
-    else
-    {
+    if (Model.Movie!=null && Model.Movie.Id != 0)
+    {         
         caption = "Edit Movie";
     }
     <h2>@caption</h2>
