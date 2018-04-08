@@ -16,6 +16,7 @@ namespace Vidly.Models
         public bool IsSubscribedToNewsletter { get; set; }
 
         [Display(Name ="Date of Birth")] //this will be displayed when used @html.labelFor
+        [Min18YearsIfAMember]
         public DateTime? Birthdate { get; set; }
 
         //Navigation Properties
