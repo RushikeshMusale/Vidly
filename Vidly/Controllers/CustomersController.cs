@@ -73,6 +73,8 @@ namespace Vidly.Controllers
         // it will send Customer object as we have bound CustomerFormViewModel.Customer 
         // (indirectly Customer)to the HTML controls
         // NOTE: Parameter name should be customer here
+
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
             if(!ModelState.IsValid)
