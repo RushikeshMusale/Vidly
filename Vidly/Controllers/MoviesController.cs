@@ -16,7 +16,7 @@ namespace Vidly.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            var moviesList = _context.Movies.Include(m=>m.Genre).ToList();
+            var moviesList = _context.Movies.Include(m => m.Genre).ToList();
             return View(moviesList);
         }
 
@@ -30,18 +30,29 @@ namespace Vidly.Controllers
 
         public ActionResult New()
         {
-            var viewModel = new MovieFormViewModel
+            var viewModel = new MovieFormViewModel()
             {
+                
                 GenreType = _context.Genres.ToList()
             };
-            return View("MovieForm",viewModel);
+            return View("MovieForm", viewModel);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Movie movie)
         {
             try
             {
-                if(movie.Id == 0)
+                if (!ModelState.IsValid)
+                {
+                    var viewModel = new MovieFormViewModel(movie)
+                    {                        
+                        GenreType = _context.Genres.ToList()
+                    };
+                    return View("MovieForm", viewModel);
+                }
+                if (movie.Id == 0)
                 {
                     movie.DateAdded = DateTime.Now;
                     _context.Movies.Add(movie);
@@ -71,12 +82,12 @@ namespace Vidly.Controllers
             if (movie == null)
                 return HttpNotFound();
 
-            var viewModel = new MovieFormViewModel {
-                Movie=movie,
-                GenreType = _context.Genres.ToList()        
+            var viewModel = new MovieFormViewModel(movie)
+            {                
+                GenreType = _context.Genres.ToList()
             };
 
-            return View("MovieForm",viewModel);
+            return View("MovieForm", viewModel);
         }
 
         protected override void Dispose(bool disposing)

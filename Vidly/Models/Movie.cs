@@ -19,6 +19,7 @@ namespace Vidly.Models
 
         [Display(Name ="Number In Stock")]
         [Required]
+        [Range(1,20)]
         public int NumberInStock { get; set; }
 
         //Navigation Properties
