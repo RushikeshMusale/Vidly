@@ -51,23 +51,24 @@ else
             $("#customers .js-delete").on("click", function () {
                 var button = $(this);
 
-                if(confirm("Are you sure you want to delete customr?"))
-                {
-                    $.ajax({
-                        //here $(this) is button
-                        //url: "/api/customers/" + $(this).attr("data-customer-id"),
+                bootbox.confirm("Are you sure you want to delete customer?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            //here $(this) is button
+                            //url: "/api/customers/" + $(this).attr("data-customer-id"),
 
-                        url: "/api/customers/" + button.attr("data-customer-id"),
-                        method: "DELETE",
-                        success: function () {
+                            url: "/api/customers/" + button.attr("data-customer-id"),
+                            method: "DELETE",
+                            success: function () {
 
-                            //we can't use $(this) here, because it won't give us button 
-                            //it will be success callback function
-                            button.parents("tr").remove();
-                            console.log("succss");
-                        }
-                    })                    
-                }
+                                //we can't use $(this) here, because it won't give us button 
+                                //it will be success callback function
+                                button.parents("tr").remove();
+                                console.log("succss");
+                            }
+                        })
+                    }
+                })                
             })
         })
     </script>
