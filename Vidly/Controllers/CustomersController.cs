@@ -14,13 +14,8 @@ namespace Vidly.Controllers
         private ApplicationDbContext _context = new ApplicationDbContext();
         // GET: Customers
         public ActionResult Index()
-        {
-            //here Include is used to eager load MembershipType object
-            //if Include is not used MembershipType will be null
-            //**Include is an extension method & defined in System.Data.Entity
-            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
-           
-            return View(customers);
+        {                      
+            return View();
         }
 
         //Important method when using db context.
