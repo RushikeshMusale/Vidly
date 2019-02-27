@@ -22,6 +22,11 @@ namespace Vidly.Dtos
        
         [Required]
         public byte GenreId { get; set; }
-       
+
+        //Somehow this does not work
+        //public GenreDto Genre1 { get; set; } might be a limitation of automapper
+
+        public GenreDto Genre { get; set; }
+
     }
 }

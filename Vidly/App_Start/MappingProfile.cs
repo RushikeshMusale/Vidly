@@ -19,7 +19,7 @@ namespace Vidly.App_Start
             //Otherwise update() does not work. it will try to update id as well. we don't want that
             Mapper.CreateMap<CustomerDto, Customer>().ForMember(cust => cust.Id, opt => opt.Ignore());
 
-            
+            Mapper.CreateMap<Genre, GenreDto>();
 
             Mapper.CreateMap<Movie, MovieDto>();
 
