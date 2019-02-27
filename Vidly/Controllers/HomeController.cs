@@ -6,6 +6,8 @@ using System.Web.Mvc;
 
 namespace Vidly.Controllers
 {
+    // Since we have applied application level filter, lets allow anonymous users to view Home page
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()
