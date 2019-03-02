@@ -12,6 +12,9 @@ namespace Vidly.Models
         [Required]
         [Display(Name = "Driving License")]
         public string DrivingLicense { get; set; }
+
+        [Required]
+        public string Phone { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -75,6 +78,9 @@ namespace Vidly.Models
 
         [Required]
         public string DrivingLicense { get; set; }
+
+        [Required]
+        public string Phone { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
