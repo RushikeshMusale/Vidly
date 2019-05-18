@@ -8,14 +8,24 @@
 <form>
     <div class="form-group">
         <label>Customer</label>
-        <input id="customer" type="text" value="" class="form-control" />
+        <div class="tt-container">
+            <input id="customer" type="text" value="" class="form-control" />
+         </div>
+
     </div>
 
     <div class="form-group">
         <label>Movies</label>
-        <input type="text" value="" class="form-control" />
+        <div class="tt-container">
+            <input id="movie" type="text" value="" class="form-control" />
+        </div>
     </div>
-
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <ul id="movies" class="list-group"></ul>
+        </div>
+    </div>
+   
     <button class="btn btn-primary">Submit</button>
 </form>
 
@@ -24,7 +34,9 @@
     <script>
         $(document).ready(function () {
 
-            var vm = {};
+            var vm = {
+                movieIds : []
+            };
 
             //step1
             var customers = new Bloodhound({
@@ -50,6 +62,40 @@
                 //step 3: add typeahead select event to store customer id selected by user
                 vm.customerId = customer.id;
                 debugger;
+            });
+
+
+            //Add autocompletion to movies
+            
+            var movies = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                
+                remote: {
+                    url: '/api/movies?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#movie').typeahead({
+                minLength: 3,
+                highlight: true
+            }, {
+                name: 'movies',
+                display: 'name',
+                source: movies
+            }).on("typeahead:select", function (e, movie) {
+
+                $('#movies').append("<li class='list-group-item'>" + movie.name + "</li>");
+                $("#movie").typeahead("val", ""); // hear we can't use .val directly becuase of typeahead class
+
+                vm.movieIds.push(movie.id); // initialize vm object with empty array, otherwise it will throw error
+                
+                console.log("movie " + movie.id);
+            })
+
+            $(".tt-suggestion").hover(function () {
+                console.log("hitme");
             });
 
         })
