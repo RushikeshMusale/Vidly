@@ -28,9 +28,15 @@ namespace Vidly.Controllers.Api
             {
                 var movie = _context.Movies.Single(m => m.Id == movieId);
 
+                if (movie.NumberAvailable == 0)
+                    return BadRequest("Movie not available");
+
+                movie.NumberAvailable = movie.NumberAvailable - 1;
+
                 Rental rental = new Rental { Customer = customer, Movie = movie,
                 DateRented= DateTime.Now};
 
+                
                 _context.Rentals.Add(rental);
             }
 
