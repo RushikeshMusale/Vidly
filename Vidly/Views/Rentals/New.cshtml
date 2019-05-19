@@ -102,8 +102,10 @@
                     method: "post",
                     data: vm
                 }).done(function (e) {
+                    toastr.success("Rentals successfully recorded!")
                     console.log("done");
                 }).fail(function (e) {
+                    toastr.error("Sonething unexpected happened");
                     console.log("fail");
                 })
             })
